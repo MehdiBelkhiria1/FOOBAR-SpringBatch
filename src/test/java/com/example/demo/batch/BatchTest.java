@@ -8,12 +8,14 @@ import org.springframework.batch.core.Job;
 import org.springframework.batch.test.JobLauncherTestUtils;
 import org.springframework.batch.test.context.SpringBatchTest;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ContextConfiguration;
 
 import com.example.demo.config.BatchConfig;
 import com.example.demo.processor.Processor;
 import com.example.demo.reader.Reader;
+import com.example.demo.utils.Utils;
 import com.example.demo.writer.Writer;
 
 
@@ -26,7 +28,7 @@ public class BatchTest {
     private JobLauncherTestUtils jobLauncherTestUtils;
     
     @Test
-    public void testHello(@Autowired Job job) throws Exception {
+    public void testHello(@Autowired @Qualifier(Utils.JOB_NAME) Job job) throws Exception {
     	this.jobLauncherTestUtils.setJob(job);
         var jobExecution =
                 jobLauncherTestUtils.launchJob();

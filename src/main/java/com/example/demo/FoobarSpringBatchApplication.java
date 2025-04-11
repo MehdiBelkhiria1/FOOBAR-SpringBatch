@@ -6,9 +6,12 @@ import org.springframework.batch.core.JobParameters;
 import org.springframework.batch.core.JobParametersBuilder;
 import org.springframework.batch.core.explore.JobExplorer;
 import org.springframework.batch.core.launch.JobLauncher;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+import com.example.demo.utils.Utils;
 
 @SpringBootApplication(scanBasePackages = "com.example.demo")
 public class FoobarSpringBatchApplication implements CommandLineRunner {
@@ -17,7 +20,7 @@ public class FoobarSpringBatchApplication implements CommandLineRunner {
     private final Job myBatchJob;
     private final JobExplorer jobExplorer;
     
-    public FoobarSpringBatchApplication(JobLauncher jobLauncher, Job myBatchJob, JobExplorer jobExplorer) {
+    public FoobarSpringBatchApplication(JobLauncher jobLauncher,@Qualifier(Utils.JOB_NAME) Job myBatchJob, JobExplorer jobExplorer) {
         this.jobLauncher = jobLauncher;
         this.myBatchJob = myBatchJob;
         this.jobExplorer=jobExplorer;
