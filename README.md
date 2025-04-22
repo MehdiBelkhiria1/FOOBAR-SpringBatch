@@ -70,3 +70,14 @@ docker build -t FOOBAR-SpringBatch .
 
 Lancer le conteneur:
 docker run -d -p 9090:9090 --name conteneur-nom-du-projet FOOBAR-SpringBatch
+
+## Exécution via Docker Compose(essentiel pour l'exemple Kafka)
+
+Construire et lancer les conteneurs(application FOOBAR-SpringBatch+Apache Kafka):
+docker-compose up -d .
+
+lancer le webservice:
+curl -X POST http://localhost:9090/kafka/launch -H "Content-Type: application/json" -d "{\"jobName\":\"multiMessageJob\",\"params\":{}}"
+
+Verifier l'execution du message par Apache Kafka
+docker exec -it kafka1  /opt/kafka/bin/kafka-consumer-groups.sh  --bootstrap-server localhost:9092 --group batch-group --describe
