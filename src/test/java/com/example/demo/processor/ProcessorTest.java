@@ -2,22 +2,26 @@ package com.example.demo.processor;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 
 public class ProcessorTest {
 
 	 private final Processor processor = new Processor();
 
-	    @Test
-	    void testProcessor() {
-	        assertEquals("1", processor.process(1));
-	        assertEquals("FOOFOO", processor.process(3));  
-	        assertEquals("BARBAR", processor.process(5));  
-	        assertEquals("QUIX", processor.process(7));   
-	        assertEquals("FOO", processor.process(9));   
-	        assertEquals("FOOBAR", processor.process(51));
-	        assertEquals("BARFOO", processor.process(53)); 
-	        assertEquals("FOOFOOFOO", processor.process(33));
-	        assertEquals("FOOBARBAR", processor.process(15)); 
+	    @ParameterizedTest(name = "processor({0}) should return \"{1}\"")
+	    @CsvSource({
+	        "1, 1",
+	        "3, FOOFOO",
+	        "5, BARBAR",
+	        "7, QUIX",
+	        "9, FOO",
+	        "51, FOOBAR",
+	        "53, BARFOO",
+	        "33, FOOFOOFOO",
+	        "15, FOOBARBAR"
+	    })
+	    void testProcessor(int input, String expectedOutput) {
+	        assertEquals(expectedOutput, processor.process(input));
 	    }
 }

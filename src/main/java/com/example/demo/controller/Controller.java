@@ -26,7 +26,7 @@ public class Controller {
     
     private final JobExplorer jobExplorer;
 
-    public Controller(JobLauncher jobLauncher,  @Qualifier(Utils.JOB_NAME) Job myBatchJob, JobExplorer jobExplorer) {
+    public Controller(JobLauncher jobLauncher,  @Qualifier(Utils.JOB_FOOBAR) Job myBatchJob, JobExplorer jobExplorer) {
         this.jobLauncher = jobLauncher;
         this.myBatchJob = myBatchJob;
         this.jobExplorer=jobExplorer;

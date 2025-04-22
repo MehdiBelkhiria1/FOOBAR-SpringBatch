@@ -20,7 +20,7 @@ public class FoobarSpringBatchApplication implements CommandLineRunner {
     private final Job myBatchJob;
     private final JobExplorer jobExplorer;
     
-    public FoobarSpringBatchApplication(JobLauncher jobLauncher,@Qualifier(Utils.JOB_NAME) Job myBatchJob, JobExplorer jobExplorer) {
+    public FoobarSpringBatchApplication(JobLauncher jobLauncher,@Qualifier(Utils.JOB_FOOBAR) Job myBatchJob, JobExplorer jobExplorer) {
         this.jobLauncher = jobLauncher;
         this.myBatchJob = myBatchJob;
         this.jobExplorer=jobExplorer;

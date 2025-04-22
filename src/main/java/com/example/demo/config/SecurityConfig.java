@@ -16,7 +16,7 @@ public class SecurityConfig {
 		  http
           .csrf(csrf -> csrf.disable()) 
           .authorizeHttpRequests(auth -> auth
-              .requestMatchers("/api/**","/schedule/**","/messages/**").permitAll() // permettre l`accees au controlleur /api/
+              .requestMatchers("/api/**","/schedule/**","/messages/**","/kafka/**").permitAll() // permettre l`accees au controlleur /api/
               .anyRequest().authenticated() 
           )
           .httpBasic(withDefaults()); 

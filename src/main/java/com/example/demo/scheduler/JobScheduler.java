@@ -22,7 +22,7 @@ public class JobScheduler {
     private JobLauncher jobLauncher;
 
     @Autowired
-    @Qualifier(Utils.JOB_NAME)
+    @Qualifier(Utils.JOB_FOOBAR)
     private Job myJob;
 
     @Scheduled(fixedDelay = 10000) // Runs every 10 sec (or adjust to your use case)

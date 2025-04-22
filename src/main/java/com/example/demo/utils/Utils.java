@@ -1,11 +1,14 @@
 package com.example.demo.utils;
 
+
 public class Utils {
 
-	public static final String INPUT_FILE = "src/main/resources/input.txt";
-	public static final String OUTPUT_FILE = "src/main/resources/output.txt";
+	public final static String INPUT_FILE="/input.txt";
+	public final static String OUTPUT_FILE="/output.txt";
+	
 
-	public static final String JOB_NAME = "fooBarJob";
+	public static final String JOB_FOOBAR = "fooBarJob";
+	public static final String JOB_MULTI_MESSAGE = "multiMessageJob";
 	public static final String STEP_NAME = "fooBarStep";
 
 	public static String processNumber(Integer number) {

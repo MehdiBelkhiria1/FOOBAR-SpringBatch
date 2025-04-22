@@ -8,27 +8,22 @@ import java.util.Map;
 import javax.sql.DataSource;
 
 import org.springframework.batch.core.Job;
-import org.springframework.batch.core.JobParameters;
 import org.springframework.batch.core.Step;
 import org.springframework.batch.core.configuration.annotation.JobScope;
 import org.springframework.batch.core.job.builder.FlowBuilder;
 import org.springframework.batch.core.job.builder.JobBuilder;
 import org.springframework.batch.core.job.flow.Flow;
-import org.springframework.batch.core.job.flow.FlowStep;
 import org.springframework.batch.core.launch.JobLauncher;
 import org.springframework.batch.core.launch.support.RunIdIncrementer;
 import org.springframework.batch.core.launch.support.TaskExecutorJobLauncher;
 import org.springframework.batch.core.repository.JobRepository;
 import org.springframework.batch.core.repository.support.JobRepositoryFactoryBean;
-import org.springframework.batch.core.scope.context.JobSynchronizationManager;
 import org.springframework.batch.core.step.builder.StepBuilder;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.beans.factory.config.CustomScopeConfigurer;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.support.SimpleThreadScope;
-import org.springframework.core.task.SimpleAsyncTaskExecutor;
 import org.springframework.core.task.TaskExecutor;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseBuilder;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseType;
@@ -82,9 +77,9 @@ public class BatchConfig{
 	                .build();
 	    }
 
-	    @Bean(Utils.JOB_NAME)
+	    @Bean(Utils.JOB_FOOBAR)
 	    public Job fooBarJob(Step fooBarQuixStep,JobRepository jobRepository) {
-	        return new JobBuilder(Utils.JOB_NAME, jobRepository)
+	        return new JobBuilder(Utils.JOB_FOOBAR, jobRepository)
 	        		.incrementer(new RunIdIncrementer())
 	                .start(fooBarQuixStep)
 	                .build();
@@ -149,7 +144,7 @@ public class BatchConfig{
 	    }
 
 	    
-	    @Bean("multiMessageJob")
+	    @Bean(Utils.JOB_MULTI_MESSAGE)
 	    public Job multiMessageJob(JobRepository jobRepository,
 	                               Flow splitFlow) {
 	        return new JobBuilder("multiMessageJob", jobRepository)

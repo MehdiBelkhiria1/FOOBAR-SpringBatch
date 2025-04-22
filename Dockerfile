@@ -11,4 +11,4 @@ COPY target/FOOBAR-SpringBatch-0.0.1-SNAPSHOT.jar /app/FOOBAR-SpringBatch-0.0.1-
 EXPOSE 9090
 
 # Run the JAR
-ENTRYPOINT ["java", "-jar", "app.jar"]
+ENTRYPOINT ["java", "-jar", "FOOBAR-SpringBatch-0.0.1-SNAPSHOT.jar"]

@@ -28,7 +28,7 @@ public class BatchTest {
     private JobLauncherTestUtils jobLauncherTestUtils;
     
     @Test
-    public void testHello(@Autowired @Qualifier(Utils.JOB_NAME) Job job) throws Exception {
+    public void testHello(@Autowired @Qualifier(Utils.JOB_FOOBAR) Job job) throws Exception {
     	this.jobLauncherTestUtils.setJob(job);
         var jobExecution =
                 jobLauncherTestUtils.launchJob();
